@@ -1,4 +1,9 @@
+var path = require('path');
+
 module.exports = function(grunt) {
+
+	// load all grunt tasks
+	require("load-grunt-tasks")(grunt);
 
 	// Project configuration.
 	grunt.initConfig({
@@ -9,18 +14,32 @@ module.exports = function(grunt) {
 			dist: "dist"
 		},
 
-		clean: {
-			default: [
-				"<%= crm.dist %>"
-			]
-		},
+		clean: [ "<%= crm.dist %>" ],
 
 		copy: {
+			index: {src: "<%= crm.src %>/index.html", dest: "<%= crm.dist %>/index.html"}
+		},
+
+		handlebars :{
 			default: {
-				files: [
-					{src: "<%= crm.src %>/index.html", dest: "<%= crm.dist %>/index.html"}
-				]
+				options: {
+					namespace: "JST.templates",
+					processName: function(filePath) {
+						return path.basename(filePath, ".hbs");
+					}
+				},
+				files: {
+					'<%= crm.dist %>/templates.js': '<%= crm.src %>/templates/*.hbs',
+				}
 			}
+		},
+
+		jshint: {
+			options: {
+				jshintrc : '.jshintrc',
+				reporter : require('jshint-stylish')
+			},
+			default: ['Gruntfile.js', '.jshintrc', '<%= crm.src %>/scripts/**/*.js', '!<%= crm.src %>/scripts/vendor/**']
 		},
 
 		less: {
@@ -33,22 +52,36 @@ module.exports = function(grunt) {
 
 		uglify: {
 			options: {
-				banner: "/*! <%= pkg.name %> <%= grunt.template.today('yyyy-mm-dd') %> */\n"
+				banner: "/*! <%= pkg.name %> <%= grunt.template.today('yyyy-mm-dd') %> */\n",
+				compress: false,
+				beautify: true,
+				mangle: false
 			},
 			default: {
-				src: "<%= crm.src %>/scripts/**/*.js",
-				dest: "<%= crm.dist %>/main.js"
+				files: {
+					'<%= crm.dist %>/main.js': [
+						'<%= crm.src %>/scripts/lib/*.js',
+						'<%= crm.src %>/scripts/helpers/*.js',
+						'<%= crm.src %>/scripts/models/*.js',
+						'<%= crm.src %>/scripts/collections/*.js',
+						'<%= crm.src %>/scripts/views/*.js',
+						'<%= crm.src %>/scripts/router.js',
+						'<%= crm.src %>/scripts/main.js'
+					]
+				}
 			}
-		}
+		},
+
+		// Watch all the files under the src directory for changes and run the necessary tasks
+		watch: {
+			default: {
+				files: ["<%= crm.src %>/**/*", "Gruntfile.js", "package.json", ".jshintrc"],
+				tasks: ["build"]
+			}
+		},
 	});
 
-	// Load the plugin that provides the "uglify" task.
-	grunt.loadNpmTasks("grunt-contrib-clean");
-	grunt.loadNpmTasks("grunt-contrib-copy");
-	grunt.loadNpmTasks("grunt-contrib-less");
-	grunt.loadNpmTasks("grunt-contrib-uglify");
-
-	// Default task(s).
-	grunt.registerTask("default", ["clean", "copy", "less", "uglify"]);
+	grunt.registerTask("build", ["clean", "jshint", "copy", "less", "uglify", "handlebars"]);
+	grunt.registerTask("default", ["build", "watch"]);
 
 };
