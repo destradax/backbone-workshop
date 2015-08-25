@@ -17,7 +17,8 @@ module.exports = function(grunt) {
 		clean: [ "<%= crm.dist %>" ],
 
 		copy: {
-			index: {src: "<%= crm.src %>/index.html", dest: "<%= crm.dist %>/index.html"}
+			index: {src: "<%= crm.src %>/index.html", dest: "<%= crm.dist %>/index.html"},
+			vendor_js: {src: "<%= crm.src %>/js/vendor/*", dest: "<%= crm.dist %>/", expand: true, flatten: true}
 		},
 
 		handlebars :{
