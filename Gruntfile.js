@@ -16,6 +16,15 @@ module.exports = function(grunt) {
 
 		clean: [ "<%= crm.dist %>" ],
 
+		connect: {
+			default: {
+				options: {
+					hostname: 'localhost',
+					base: "<%= crm.dist %>"
+				}
+			}
+		},
+
 		copy: {
 			index: {src: "<%= crm.src %>/index.html", dest: "<%= crm.dist %>/index.html"},
 			vendor_js: {src: "<%= crm.src %>/js/vendor/*", dest: "<%= crm.dist %>/", expand: true, flatten: true}
@@ -83,6 +92,6 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask("build", ["clean", "jshint", "copy", "less", "uglify", "handlebars"]);
-	grunt.registerTask("default", ["build", "watch"]);
+	grunt.registerTask("default", ["build", "connect", "watch"]);
 
 };
