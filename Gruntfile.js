@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 				jshintrc : '.jshintrc',
 				reporter : require('jshint-stylish')
 			},
-			default: ['Gruntfile.js', '.jshintrc', '<%= crm.src %>/scripts/**/*.js', '!<%= crm.src %>/scripts/vendor/**']
+			default: ['Gruntfile.js', '.jshintrc', '<%= crm.src %>/js/**/*.js', '!<%= crm.src %>/js/vendor/**']
 		},
 
 		less: {
@@ -60,13 +60,13 @@ module.exports = function(grunt) {
 			default: {
 				files: {
 					'<%= crm.dist %>/main.js': [
-						'<%= crm.src %>/scripts/lib/*.js',
-						'<%= crm.src %>/scripts/helpers/*.js',
-						'<%= crm.src %>/scripts/models/*.js',
-						'<%= crm.src %>/scripts/collections/*.js',
-						'<%= crm.src %>/scripts/views/*.js',
-						'<%= crm.src %>/scripts/router.js',
-						'<%= crm.src %>/scripts/main.js'
+						'<%= crm.src %>/js/lib/*.js',
+						'<%= crm.src %>/js/helpers/*.js',
+						'<%= crm.src %>/js/models/*.js',
+						'<%= crm.src %>/js/collections/*.js',
+						'<%= crm.src %>/js/views/*.js',
+						'<%= crm.src %>/js/router.js',
+						'<%= crm.src %>/js/main.js'
 					]
 				}
 			}
