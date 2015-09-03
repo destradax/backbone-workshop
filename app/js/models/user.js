@@ -1,5 +1,10 @@
 CRM.Models.User = Backbone.Model.extend({
-	url: "http://api.randomuser.me/",
+	url: function () {
+		if (this.get("seed")) {
+			return "http://api.randomuser.me/?seed="+this.get("seed");
+		}
+		return "http://api.randomuser.me/";
+	},
 
 	parse: function (response) {
 		var attributes = {};

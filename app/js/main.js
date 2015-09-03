@@ -6,9 +6,6 @@ window.CRM = {
 };
 
 $(document).ready(function () {
-	window.mark = new CRM.Models.User();
-	window.mark.on("sync", function () {
-		console.log(window.mark.attributes);
-	});
-	window.mark.fetch();
+	new CRM.Routers.Router();
+	Backbone.history.start();
 });
