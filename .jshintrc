@@ -17,5 +17,7 @@
 	"trailing": false,
 	"undef": true,
 	"globals": {
+		"Backbone": true,
+		"CRM": true
 	}
 }
