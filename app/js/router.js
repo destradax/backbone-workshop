@@ -6,18 +6,12 @@ CRM.Routers.Router = Backbone.Router.extend({
 	},
 
 	randomUserRoute: function () {
-		window.user = new CRM.Models.User();
-		window.user.on("sync", function () {
-			console.log(window.user.attributes);
-		});
-		window.user.fetch();
+		var view = new CRM.Views.User();
+		$("#main").html(view.render().el);
 	},
 
 	userRoute: function (seed) {
-		window.user = new CRM.Models.User({seed: seed});
-		window.user.on("sync", function () {
-			console.log(window.user.attributes);
-		});
-		window.user.fetch();
+		var view = new CRM.Views.User({seed: seed});
+		$("#main").html(view.render().el);
 	},
 });

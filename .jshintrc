@@ -18,6 +18,7 @@
 	"undef": true,
 	"globals": {
 		"Backbone": true,
+		"JST": true,
 		"CRM": true
 	}
 }
