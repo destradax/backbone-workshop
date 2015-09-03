@@ -70,13 +70,13 @@ module.exports = function(grunt) {
 			default: {
 				files: {
 					'<%= crm.dist %>/main.js': [
+						'<%= crm.src %>/js/main.js',
 						'<%= crm.src %>/js/lib/*.js',
 						'<%= crm.src %>/js/helpers/*.js',
 						'<%= crm.src %>/js/models/*.js',
 						'<%= crm.src %>/js/collections/*.js',
 						'<%= crm.src %>/js/views/*.js',
-						'<%= crm.src %>/js/router.js',
-						'<%= crm.src %>/js/main.js'
+						'<%= crm.src %>/js/router.js'
 					]
 				}
 			}
