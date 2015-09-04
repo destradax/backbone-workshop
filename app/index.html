@@ -3,10 +3,27 @@
 	<head>
 		<meta charset="utf-8">
 		<title>CRM</title>
+		<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css">
+		<script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="main.css" media="screen" title="no title" charset="utf-8">
 	</head>
 	<body>
-		<main id="main">Hello World</main>
+		<header class="mdl-layout__header">
+			<div class="mdl-layout-icon"></div>
+			<div class="mdl-layout__header-row">
+				<span class="mdl-layout-title">CRM</span>
+				<div class="mdl-layout-spacer"></div>
+				<nav class="mdl-navigation">
+					<a class="mdl-navigation__link" href="#users">User List</a>
+					<a class="mdl-navigation__link" href="#user">Random User</a>
+					<a class="mdl-navigation__link" href="#user/test">Test User</a>
+				</nav>
+			</div>
+		</header>
+		<main class="mdl-layout__content">
+			<div id="main" class="page-content">Nothing here...</div>
+		</main>
 
 		<script src="jquery-1.11.3.min.js" charset="utf-8"></script>
 		<script src="underscore-min.js" charset="utf-8"></script>

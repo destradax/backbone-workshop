@@ -1,19 +1,25 @@
-{{user.title}} {{user.firstName}} {{user.lastName}}
-<hr>
-
-<form class="frm-user" action="#">
-
-	<div>
-		<label for="name-title">Title: </label>
-		<input type="text" name="name-title" value="{{user.title}}">
+<div class="mdl-card mdl-shadow--4dp">
+	<div class="mdl-card__title">
+		<h2 class="mdl-card__title-text">{{user.title}} {{user.firstName}} {{user.lastName}}</h2>
 	</div>
-	<div>
-		<label for="name-first">firstName: </label>
-		<input type="text" name="name-first" value="{{user.firstName}}">
+	<div class="mdl-card__media">
+		<img src="{{user.picture.medium}}" alt="thumbnail"	border="0" />
 	</div>
-	<div>
-		<label for="name-last">lastName: </label>
-		<input type="text" name="name-last" value="{{user.lastName}}">
+	<div class="mdl-card__supporting-text mdl-card--border">
+		<form action="#" class="frm-user">
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" name="name-title" value="{{user.title}}"/>
+				<label class="mdl-textfield__label" for="name-title">Title</label>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" name="name-first" value="{{user.firstName}}"/>
+				<label class="mdl-textfield__label" for="name-first">First Name</label>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" name="name-last" value="{{user.lastName}}"/>
+				<label class="mdl-textfield__label" for="name-last">Last Name</label>
+			</div>
+			<input type="submit" value="Update" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect">
+		</form>
 	</div>
-	<input type="submit" name="submit" value="Submit" />
-</form>
+</div>

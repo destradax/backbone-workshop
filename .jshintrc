@@ -17,6 +17,7 @@
 	"trailing": false,
 	"undef": true,
 	"globals": {
+		"componentHandler": true,
 		"Backbone": true,
 		"JST": true,
 		"CRM": true

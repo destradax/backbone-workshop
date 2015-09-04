@@ -20,10 +20,11 @@ CRM.Views.User = Backbone.View.extend({
 
 	render: function () {
 		var context = {
-      user: this.model.toJSON()
-    };
-    this.$el.html(this.template(context));
-    return this;
+			user: this.model.toJSON()
+		};
+		this.$el.html(this.template(context));
+		componentHandler.upgradeDom();
+		return this;
 	},
 
 	updateUser: function (event) {
