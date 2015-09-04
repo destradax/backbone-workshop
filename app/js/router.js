@@ -2,7 +2,8 @@ CRM.Routers.Router = Backbone.Router.extend({
 	routes: {
 		"": "randomUserRoute",
 		"user": "randomUserRoute",
-		"user/:seed": "userRoute"
+		"user/:seed": "userRoute",
+		"users": "userListRoute"
 	},
 
 	randomUserRoute: function () {
@@ -14,4 +15,9 @@ CRM.Routers.Router = Backbone.Router.extend({
 		var view = new CRM.Views.User({seed: seed});
 		$("#main").html(view.render().el);
 	},
+
+	userListRoute: function () {
+		var view = new CRM.Views.UserList();
+		$("#main").html(view.render().el);
+	}
 });
