@@ -1,1 +1,19 @@
-Hello {{user.title}} {{user.firstName}} {{user.lastName}}!
+{{user.title}} {{user.firstName}} {{user.lastName}}
+<hr>
+
+<form class="frm-user" action="#">
+
+	<div>
+		<label for="name-title">Title: </label>
+		<input type="text" name="name-title" value="{{user.title}}">
+	</div>
+	<div>
+		<label for="name-first">firstName: </label>
+		<input type="text" name="name-first" value="{{user.firstName}}">
+	</div>
+	<div>
+		<label for="name-last">lastName: </label>
+		<input type="text" name="name-last" value="{{user.lastName}}">
+	</div>
+	<input type="submit" name="submit" value="Submit" />
+</form>
